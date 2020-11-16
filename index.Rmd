@@ -1,5 +1,5 @@
 ---
-title: "Estado del COVID-19 en Costa Rica (Álvaro Vásquez)"
+title: "Estado del COVID-19 en Costa Rica (Álvaro Vásquez, Dilena Cruz)"
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows
@@ -331,7 +331,8 @@ leaflet_cantones <- leaflet(sf_positivos_cantones_ultima_fecha) %>%
   ) %>%
   addLegend("bottomright", pal = paleta_azul, values = ~positivos,
     title = "Casos positivos",
-    opacity = 1
+    opacity = 1,
+    group = "Cantones"
   ) %>%  
   addLayersControl(
     baseGroups = c("OpenStreetMap"),
@@ -415,7 +416,8 @@ leaflet_cantones <- leaflet(sf_activos_cantones_ultima_fecha) %>%
   ) %>%
   addLegend("bottomright", pal = paleta_activos, values = ~activos,
     title = "Casos activos",
-    opacity = 1
+    opacity = 1,
+    group = "Cantones"
   ) %>%  
   addLayersControl(
     baseGroups = c("OpenStreetMap"),
@@ -494,12 +496,14 @@ leaflet_cantones <- leaflet(sf_recuperados_cantones_ultima_fecha) %>%
               group = "Cantones",
               popup = paste("Provincia: ", sf_recuperados_cantones_ultima_fecha$provincia, "<br>",
                             "Cantón: ", sf_recuperados_cantones_ultima_fecha$canton, "<br>",
-                            "Positivos: ", sf_recuperados_cantones_ultima_fecha$recuperados
+                            "Recuperados: ", sf_recuperados_cantones_ultima_fecha$recuperados
                             )
   ) %>%
   addLegend("bottomright", pal = paleta_recuperados, values = ~recuperados,
     title = "Casos recuperados",
-    opacity = 1
+    opacity = 1,
+    group = "Cantones"
+    
   ) %>%  
   addLayersControl(
     baseGroups = c("OpenStreetMap"),
@@ -579,12 +583,14 @@ leaflet_cantones <- leaflet(sf_fallecidos_cantones_ultima_fecha) %>%
               group = "Cantones",
               popup = paste("Provincia: ", sf_fallecidos_cantones_ultima_fecha$provincia, "<br>",
                             "Cantón: ", sf_fallecidos_cantones_ultima_fecha$canton, "<br>",
-                            "Positivos: ", sf_fallecidos_cantones_ultima_fecha$fallecidos
+                            "Fallecidos: ", sf_fallecidos_cantones_ultima_fecha$fallecidos
                             )
   ) %>%
   addLegend("bottomright", pal = paleta_fallecidos, values = ~fallecidos,
     title = "Casos fallecidos",
-    opacity = 1
+    opacity = 1,
+    group = "Cantones"
+    
   ) %>%  
   addLayersControl(
     baseGroups = c("OpenStreetMap"),
